@@ -8,7 +8,7 @@ This file only changes the definition tables in Keyboard.HC.Z, so if you don't w
 
 # FullGKey
 
-![Differences2](https://github.com/Rion96/GKey/blob/Full-German-Keyboard/TOSKeyDevFull.png)
+![Differences2](https://github.com/Rion96/GKey/blob/master/TOSKeyDevFull.png)
 
 I've found a way to implement the "<>|" Key.
 I've also noticed that there are very few ALT Key combinations in Temple OS, so now I use the ALT keys as replacement for the
