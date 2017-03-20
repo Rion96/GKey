@@ -1,13 +1,14 @@
 # GKey
-![Differences1](https://github.com/Rion96/GKey/blob/master/TOSKeyDev2.png)
 
-![Differences2](https://github.com/Rion96/GKey/blob/Full-German-Keyboard/TOSKeyDevFull.png)
+![Differences1](https://github.com/Rion96/GKey/blob/master/TOSKeyDev2.png)
 
 As you can see, this isn't a full implementation of a German Keyboard. I was mainly going for the most essential stuff. This is partially because some parts of the German keyboard are seriously hindering when you're coding (eg. The position of the Brackets), the fact that I do most things in English (So "öäüß" are useless) and the fact that I'm honestly just not experienced enough to get AltGr-Combos and the "<>|" Key to work since they aren't present on standard US keyboards and its scan code doesn't seem to be represented in the definition tables.
 
 This file only changes the definition tables in Keyboard.HC.Z, so if you don't want to go through the hassle of downloading my ISO, or my modifications aren't to your liking, you are free to make these changes yourself as well. I've provided an uncompressed version my Keyboard.HC file as a reference.
 
 # FullGKey
+
+![Differences2](https://github.com/Rion96/GKey/blob/Full-German-Keyboard/TOSKeyDevFull.png)
 
 I've found a way to implement the "<>|" Key.
 I've also noticed that there are very few ALT Key combinations in Temple OS, so now I use the ALT keys as replacement for the
