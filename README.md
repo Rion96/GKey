@@ -10,7 +10,7 @@ This file only changes the definition tables in Keyboard.HC.Z, so if you don't w
 # Installation
 - Mount the .ISO.C File
 - Copy Keyboard.HC.Z to your "/Kernel/SerialDev" directory
-- Run BootDrvIns
+- Run BootHDIns
 
 These commands should usually get the job done:
 
