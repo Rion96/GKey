@@ -20,7 +20,7 @@ Quick Runthrough on how to do BootHDIns on a standard VM:
 
 Harddrive:
 
-Press ENTER, then C, then press p to probe, enter Base0, then enter Base1, then 0.
+Press ENTER, then C, then ENTER again, then press p to probe, enter Base0, then enter Base1, then 0.
 
 CD/DVD Drive:
 
