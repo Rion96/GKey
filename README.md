@@ -9,13 +9,19 @@ I was mainly going for the most essential stuff. This is partially because some 
 - Mount the .ISO.C File
 - Copy Keyboard.HC.Z to your "/Kernel/SerialDev" directory
 
-This command should usually get the job done:
+These commands should usually get the job done:
 
-    Copy("T:/Keyboard.HC.Z","C:/Kernel/SerialDev");
-    
-- Run: BootHDIns;
+    Cd("T:");
+    Copy("Keyboard.HC.Z","C:/Kernel/SerialDev");
+    Cd("C:");
+    BootHDIns;
 
 Quick Runthrough on how to do BootHDIns on a standard VM:
-Press ENTER, then C, then press p to probe, enter Base0, then enter Base1.
 
-Now press T, then p to probe again, enter Base0, then press Enter until done.
+Harddrive:
+
+Press ENTER, then C, then press p to probe, enter Base0, then enter Base1, then 0.
+
+CD/DVD Drive:
+
+Now press T, then p to probe again, enter Base0, then 0, then press Enter until done.
