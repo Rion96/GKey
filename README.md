@@ -3,10 +3,16 @@
 ![Differences](https://raw.githubusercontent.com/Rion96/GKey/master/TOSKeyDevDone.png)
 
 GKey is a German keyboard layout for Temple OS.
-Due to limitations, GKey has no dead keys, no "´", no "§" and uses a Beta (β) instead of a "ß".
-Instead of the usual AltGr key, the right and left Alt keys will serve as both Alt and AltGr keys as Temple OS doesn't really make use of Alt combos anyway. Instead of a "§" the 3 button will print an @ instead. You are free to change that to whatever you want.
+Due to limitations, GKey has no dead keys and will need to use a custom font for special characters (ß,§,€).
+This font will also alter the look of the Umlaut characters implemented by Terry, to make them fit in more with the rest of the characters.
 
-GKey changes the Keyboard.HC.Z file which is important for changing the definition of scan codes and enabling the "<>|" Key, which isn't represented on US keyboards. To emulate AltGr functionality, GKey will also replace your HomeKeyPlugIns.HC.Z. So if you made changes to that, I recommend you back it up.
+![New Font](https://raw.githubusercontent.com/Rion96/GKey/master/NewFont.png)
+
+As TempleOS doesn't have support for AltGr combos, the Alt keys will serve as both Alt and AltGr keys.
+Alt+M is already used by TempleOS to maximize windows, so AltGr+M (µ) is not implemented.
+
+GKey makes changes to the Keyboard.HC.Z file which is important for altering the definition of scan codes and enabling the "<>|" Key, which isn't represented on US keyboards.
+To emulate AltGr functionality, GKey will also replace your HomeKeyPlugIns.HC.Z. So if you made changes to that, I recommend you back it up.
 
 # Installation
 
