@@ -24,24 +24,15 @@ GC_KEY_SCAN_DECODE_TABLE::
 	DU8	0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0;
 }
 //Font Definitions
-U64 uuml=0x007C666666006600;
-U64 auml=0x007C667C603C0066;
-U64 Auml=0x00667E66663C0066;
-U64 ouml=0x003C66663C006600;
-U64 Ouml=0x003C6666663C0066;
-U64 Uuml=0x003C666666660066;
-U64 euro=0x003C460F061F463C;
-U64 para=0x1C30302828181870;
-U64 sz  =0x003666663636663C;
-text.font['Å']=uuml;
-text.font['Ñ']=auml;
-text.font['é']=Auml;
-text.font['î']=ouml;
-text.font['ô']=Ouml;
-text.font['ö']=Uuml;
-text.font['û']=euro;
-text.font['ü']=para;
-text.font['·']=sz;
+text.font['Å']=0x007C666666006600;
+text.font['Ñ']=0x007C667C603C0066;
+text.font['é']=0x00667E66663C0066;
+text.font['î']=0x003C66663C006600;
+text.font['ô']=0x003C6666663C0066;
+text.font['ö']=0x003C666666660066;
+text.font['û']=0x003C460F061F463C;
+text.font['ü']=0x1C30302828181870;
+text.font['·']=0x003666663636663C;
 
 //Overwriting Scan Decode Tables
 MemCpy(NORMAL_KEY_SCAN_DECODE_TABLE,GN_KEY_SCAN_DECODE_TABLE,64);
@@ -73,7 +64,7 @@ Bool MyPutKey(I64 ch,I64 sc)
   U8 *st1,*st2;
 
   //Implementing "<>|" Key
-  if (sc&0x7F==0x56){
+  if (sc&0x7F==0x56 && !(sc&SCF_CTRL||sc&SCF_KEY_DESC)){
     if(sc&SCF_ALT)
       '|';
     else if(sc&SCF_SHIFT^^sc&SCF_CAPS)
@@ -93,7 +84,7 @@ Bool MyPutKey(I64 ch,I64 sc)
 		KeyDescSet("Dol/LTPURPLE");
 	      else
 		"$$LTPURPLE$$";
-	    } else {
+	    } else {
 	      if (sc&SCF_KEY_DESC)
 		KeyDescSet("Dol/PURPLE");
 	      else
@@ -106,7 +97,7 @@ Bool MyPutKey(I64 ch,I64 sc)
 		KeyDescSet("Dol/LTRED");
 	      else
 		"$$LTRED$$";
-	    } else {
+	    } else {
 	      if (sc&SCF_KEY_DESC)
 		KeyDescSet("Dol/RED");
 	      else
