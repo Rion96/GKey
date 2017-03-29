@@ -1,5 +1,52 @@
-//Place this file in /Home and change
-//anything you want.
+//GKey: German Keyboard Layout for TempleOS
+
+//Layout Definitions
+asm {
+GN_KEY_SCAN_DECODE_TABLE::
+	DU8	0,CH_ESC,"1234567890·\`",CH_BACKSPACE,'\t';
+	DU8	"qwertzuiopÅ+",'\n',0,"as";
+	DU8	"dfghjklîÑ^",0,"#yxcv";
+	DU8	"bnm,.-",0,'*',0,CH_SPACE,0,0,0,0,0,0;
+	DU8	0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0;
+GS_KEY_SCAN_DECODE_TABLE::
+	DU8	0,CH_SHIFT_ESC,"!\"ü$$%&/()=?\`",CH_BACKSPACE,'\t';
+	DU8	"QWERTZUIOPö*",'\n',0,"AS";
+	DU8	"DFGHJKLôé¯",0,"'YXCV";
+	DU8	"BNM;:_",0,'*',0,CH_SHIFT_SPACE,0,0,0,0,0,0;
+	DU8	0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0;
+GC_KEY_SCAN_DECODE_TABLE::
+	DU8	0,CH_ESC,"1234567890-=",CH_BACKSPACE,'\t';
+	DU8	CH_CTRLQ,CH_CTRLW,CH_CTRLE,CH_CTRLR,CH_CTRLT,CH_CTRLZ,CH_CTRLU,
+		CH_CTRLI,CH_CTRLO,CH_CTRLP,"[]",'\n',0,CH_CTRLA,CH_CTRLS;
+	DU8	CH_CTRLD,CH_CTRLF,CH_CTRLG,CH_CTRLH,CH_CTRLJ,CH_CTRLK,CH_CTRLL,
+		";'\`",0,"\\",CH_CTRLY,CH_CTRLX,CH_CTRLC,CH_CTRLV;
+	DU8	CH_CTRLB,CH_CTRLN,CH_CTRLM,",./",0,'*',0,CH_SPACE,0,0,0,0,0,0;
+	DU8	0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0;
+}
+//Font Definitions
+U64 uuml=0x007C666666006600;
+U64 auml=0x007C667C603C0066;
+U64 Auml=0x00667E66663C0066;
+U64 ouml=0x003C66663C006600;
+U64 Ouml=0x003C6666663C0066;
+U64 Uuml=0x003C666666660066;
+U64 euro=0x003C460F061F463C;
+U64 para=0x1C30302828181870;
+U64 sz  =0x003666663636663C;
+text.font['Å']=uuml;
+text.font['Ñ']=auml;
+text.font['é']=Auml;
+text.font['î']=ouml;
+text.font['ô']=Ouml;
+text.font['ö']=Uuml;
+text.font['û']=euro;
+text.font['ü']=para;
+text.font['·']=sz;
+
+//Overwriting Scan Decode Tables
+MemCpy(NORMAL_KEY_SCAN_DECODE_TABLE,GN_KEY_SCAN_DECODE_TABLE,64);
+MemCpy(SHIFT_KEY_SCAN_DECODE_TABLE,GS_KEY_SCAN_DECODE_TABLE,64);
+MemCpy(CTRL_KEY_SCAN_DECODE_TABLE,GC_KEY_SCAN_DECODE_TABLE,64);
 
 U0 TimeIns()
 {
@@ -24,6 +71,18 @@ Bool MyPutKey(I64 ch,I64 sc)
   //handled the key.
   I64 i;
   U8 *st1,*st2;
+
+  //Implementing "<>|" Key
+  if (sc&0x7F==0x56){
+    if(sc&SCF_ALT)
+      '|';
+    else if(sc&SCF_SHIFT^^sc&SCF_CAPS)
+      '>';
+    else
+      '<';
+    return TRUE;
+  }
+
   if (sc&SCF_ALT && !(sc&SCF_CTRL)) {
     switch (ch) {
       case 0:
@@ -47,7 +106,7 @@ Bool MyPutKey(I64 ch,I64 sc)
 		KeyDescSet("Dol/LTRED");
 	      else
 		"$$LTRED$$";
-	    } else {
+	    } else {
 	      if (sc&SCF_KEY_DESC)
 		KeyDescSet("Dol/RED");
 	      else
@@ -177,6 +236,7 @@ Bool MyPutKey(I64 ch,I64 sc)
 	else
 	  'Í';
 	return TRUE;
+      //Implementing AltGr functionality
       case '7':
 	if (!(sc&SCF_KEY_DESC))
 	  '{';
@@ -193,10 +253,6 @@ Bool MyPutKey(I64 ch,I64 sc)
 	if (!(sc&SCF_KEY_DESC))
 	  '}';
 	return TRUE;
-      case '<':
-	if (!(sc&SCF_KEY_DESC))
-	  '|';
-	return TRUE;
       case '·':
 	if (!(sc&SCF_KEY_DESC))
 	  '\\';
@@ -212,7 +268,7 @@ Bool MyPutKey(I64 ch,I64 sc)
       case 'e':
 	if (!(sc&SCF_KEY_DESC))
 	  'û';
-	return TRUE;
+	return TRUE;
     }
   }
   return FALSE;
@@ -224,3 +280,4 @@ Bool MyPutS(U8 *)
 }
 
 KeyDevAdd(&MyPutKey,&MyPutS,0x20000000,TRUE);
+
