@@ -31,7 +31,7 @@ text.font['”']=0x003C66663C006600;
 text.font['™']=0x003C6666663C0066;
 text.font['š']=0x003C666666660066;
 text.font['ž']=0x003C460F061F463C;
-text.font['Ÿ']=0x1C30302828181870;
+text.font['Ÿ']=0x1C36386C6C38D870;
 text.font['á']=0x003666663636663C;
 
 //Overwriting Scan Decode Tables
@@ -84,7 +84,7 @@ Bool MyPutKey(I64 ch,I64 sc)
 		KeyDescSet("Dol/LTPURPLE");
 	      else
 		"$$LTPURPLE$$";
-	    } else {
+	    } else {
 	      if (sc&SCF_KEY_DESC)
 		KeyDescSet("Dol/PURPLE");
 	      else
