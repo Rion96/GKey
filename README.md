@@ -4,7 +4,7 @@
 
 GKey is a German keyboard layout for Temple OS.
 Due to limitations, GKey has no dead keys and will need to change parts of the default font for special characters (ß,§,€).
-This font change will also apply to the umlaut characters already implemented by Terry, to make them fit in more with the rest of the characters.
+This font change will also apply to the umlaut characters already implemented by Terry to make them fit in more with the rest of the characters.
 
 ![New Font](https://raw.githubusercontent.com/Rion96/GKey/master/NewFont.png)
 
