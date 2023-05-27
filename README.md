@@ -1,5 +1,5 @@
-# Keyboard_Layouts
-Keyboard Layouts for TempleOS
+# Keyboard Layouts for TempleOS
+
 
 FKey = French Keyboard Layout
 
