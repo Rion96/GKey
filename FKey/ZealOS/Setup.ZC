@@ -1,0 +1,12 @@
+DocClear;
+"\nInstall FKey for ZealOS ";
+
+if (YorN)
+{
+	Copy("HomeKeyPlugIns.ZC", "~");
+	"\n\nReboot Now ";
+	if (YorN)
+		Reboot;
+}
+else
+	"\nSetup aborted !\n";
